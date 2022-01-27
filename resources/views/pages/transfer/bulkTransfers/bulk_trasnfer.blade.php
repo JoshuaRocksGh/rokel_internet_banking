@@ -989,7 +989,7 @@
                                 //bulk_upload_list(fileBatch, allErrors)
 
 
-                                toaster(response.message, "error", 3000);
+                                toaster(allErrors, "error", 3000);
                                 //location.reload();
                                 /* setTimeout(function() {
                                      location.reload();
