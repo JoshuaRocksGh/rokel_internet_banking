@@ -367,15 +367,20 @@ class BulkUploadsController extends Controller
 
 
         // return $fileBatch;
-        // dd('http://192.168.1.225:9096/corporate/getBulkUploadFilesDetails?' . "customerNumber=$customerNumber&batchNumber=$fileBatch");
+        // dd(env('API_BASE_URL') . "corporate/getBulkUploadData/$fileBatch");
 
 
         try {
-            $response = Http::get(env('API_BASE_URL') . "corporate/getBulkUploadData/$fileBatch");
+            $url = \config('batch.url');
+            // dd($url);
+            $response = Http::get($url . "corporate/getBulkUploadData/$fileBatch");
+            // dd($response);
+            // return $response;
             $result = new ApiBaseResponse();
 
             return $result->api_response($response);
         } catch (\Exception $e) {
+            // dd((string) $e->getMessage());
 
             DB::table('tb_error_logs')->insert([
                 'platform' => 'ONLINE_INTERNET_BANKING',

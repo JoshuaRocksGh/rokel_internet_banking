@@ -472,13 +472,12 @@
                 'url': 'get-bulk-upload-list-api?fileBatch=' + fileBatch,
                 "datatype": "application/json",
                 success: function(response) {
-                    console.log(response.data);
+                    console.log(response);
                     return false;
                     //console.log("bulk upload list:", response.data);
 
                     let pending = 0;
                     let successful = 0;
-                    let total_upload = 0
                     let successful_upload_summary = 1;
                     let failed_upload_summary = 1;
                     let upload_summary_count = 1;
@@ -962,8 +961,8 @@
                             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                         },
                         success: function(response) {
-                            //console.log(response)
-                            //return false;
+                            console.log("file batch=>", response)
+                            return false;
                             let data = response.data
                             if (response.responseCode == "000") {
                                 siteLoading("hide")
