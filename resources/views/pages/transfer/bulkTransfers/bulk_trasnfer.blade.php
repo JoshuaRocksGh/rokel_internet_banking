@@ -962,12 +962,13 @@
                         },
                         success: function(response) {
                             console.log("file batch=>", response)
-                            return false;
+                            //return false;
                             let data = response.data
                             if (response.responseCode == "000") {
                                 siteLoading("hide")
 
                                 toaster(response.message, "success", 3000);
+                                console.log()
                                 bulk_upload_list(data.fileBatch)
 
                                 /* setTimeout(function() {
