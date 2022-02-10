@@ -199,15 +199,15 @@ class BulkUploadsController extends Controller
 
             $filename = $request->excel_file->getClientOriginalName();
             $path  =  $request->file('excel_file')->getPathName();
-
+            $url = \config('batch.url');
 
             $response = Http::attach(
                 'file',
                 file_get_contents($path),
                 $filename
-            )->post(env('API_BASE_URL') . "corporate/uploadBulk", $data);
+            )->post($url . "corporate/uploadBulk", $data);
             // return $response;
-            // dd($response);
+            dd($response);
 
 
 
