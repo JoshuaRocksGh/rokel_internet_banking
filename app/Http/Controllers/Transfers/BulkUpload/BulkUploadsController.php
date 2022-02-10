@@ -193,13 +193,14 @@ class BulkUploadsController extends Controller
             'customerNumber' => $customer_no
         ];
 
-        // return $data;
+        return $data;
 
         try {
 
             $filename = $request->excel_file->getClientOriginalName();
             $path  =  $request->file('excel_file')->getPathName();
             $url = \config('batch.url');
+            dd($url . "corporate/uploadBulk");
 
             $response = Http::attach(
                 'file',
